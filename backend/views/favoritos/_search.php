@@ -4,22 +4,22 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\BarriosSearch */
+/* @var $model app\models\FavoritosSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="barrios-search">
+<div class="favoritos-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'idBarrios') ?>
+    <?= $form->field($model, 'Clientes_idClientes') ?>
 
-    <?= $form->field($model, 'nombre') ?>
+    <?= $form->field($model, 'Inmuebles_idInmuebles') ?>
 
-    <?= $form->field($model, 'Departamento_idDepartamento') ?>
+    <?= $form->field($model, 'idFavorito') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

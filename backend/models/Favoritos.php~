@@ -32,6 +32,7 @@ class Favoritos extends \yii\db\ActiveRecord
         return [
             [['Clientes_idClientes', 'Inmuebles_idInmuebles'], 'required'],
             [['Clientes_idClientes', 'Inmuebles_idInmuebles'], 'integer'],
+            [['idFavorito'], 'string', 'max' => 45],
             [['Clientes_idClientes'], 'exist', 'skipOnError' => true, 'targetClass' => Clientes::className(), 'targetAttribute' => ['Clientes_idClientes' => 'idClientes']],
             [['Inmuebles_idInmuebles'], 'exist', 'skipOnError' => true, 'targetClass' => Inmuebles::className(), 'targetAttribute' => ['Inmuebles_idInmuebles' => 'idInmuebles']],
         ];

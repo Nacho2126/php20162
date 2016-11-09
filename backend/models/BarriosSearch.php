@@ -18,7 +18,7 @@ class BarriosSearch extends Barrios
     public function rules()
     {
         return [
-            [['idBarrios'], 'integer'],
+            [['idBarrios', 'Departamento_idDepartamento'], 'integer'],
             [['nombre'], 'safe'],
         ];
     }
@@ -60,6 +60,7 @@ class BarriosSearch extends Barrios
         // grid filtering conditions
         $query->andFilterWhere([
             'idBarrios' => $this->idBarrios,
+            'Departamento_idDepartamento' => $this->Departamento_idDepartamento,
         ]);
 
         $query->andFilterWhere(['like', 'nombre', $this->nombre]);

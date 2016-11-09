@@ -29,7 +29,8 @@ class Tipoinmueble extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nombre'], 'required'],
+            [['idtipoinmueble', 'nombre'], 'required'],
+            [['idtipoinmueble'], 'integer'],
             [['nombre', 'tipoinmueblecol'], 'string', 'max' => 45],
         ];
     }

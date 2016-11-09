@@ -18,7 +18,7 @@ class ClientesSearch extends Clientes
     public function rules()
     {
         return [
-            [['idClientes', 'prioridad', 'telefono', 'Inmuebles_idInmuebles'], 'integer'],
+            [['idClientes', 'prioridad', 'telefono'], 'integer'],
             [['ci_cliente', 'nombre', 'horario_atencion', 'email'], 'safe'],
         ];
     }
@@ -62,7 +62,6 @@ class ClientesSearch extends Clientes
             'idClientes' => $this->idClientes,
             'prioridad' => $this->prioridad,
             'telefono' => $this->telefono,
-            'Inmuebles_idInmuebles' => $this->Inmuebles_idInmuebles,
         ]);
 
         $query->andFilterWhere(['like', 'ci_cliente', $this->ci_cliente])

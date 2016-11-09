@@ -31,7 +31,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'horario_atencion',
             // 'telefono',
             // 'email:email',
-            // 'Inmuebles_idInmuebles',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

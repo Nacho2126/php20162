@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Departamento;
+use app\models\Favoritos;
 
 /**
- * DepartamentoSearch represents the model behind the search form about `app\models\Departamento`.
+ * FavoritosSearch represents the model behind the search form about `app\models\Favoritos`.
  */
-class DepartamentoSearch extends Departamento
+class FavoritosSearch extends Favoritos
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class DepartamentoSearch extends Departamento
     public function rules()
     {
         return [
-            [['idDepartamento'], 'integer'],
-            [['nombre'], 'safe'],
+            [['Clientes_idClientes', 'Inmuebles_idInmuebles'], 'integer'],
+            [['idFavorito'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class DepartamentoSearch extends Departamento
      */
     public function search($params)
     {
-        $query = Departamento::find();
+        $query = Favoritos::find();
 
         // add conditions that should always apply here
 
@@ -59,10 +59,11 @@ class DepartamentoSearch extends Departamento
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'idDepartamento' => $this->idDepartamento,
+            'Clientes_idClientes' => $this->Clientes_idClientes,
+            'Inmuebles_idInmuebles' => $this->Inmuebles_idInmuebles,
         ]);
 
-        $query->andFilterWhere(['like', 'nombre', $this->nombre]);
+        $query->andFilterWhere(['like', 'idFavorito', $this->idFavorito]);
 
         return $dataProvider;
     }
