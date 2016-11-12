@@ -121,4 +121,10 @@ class ClientesController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    /**
+    * Rertorno todos los Clientes
+    **/
+    public function findAll(){
+        return Clientes::find()->select(['nombre', 'idClientes'])->indexBy('idClientes')->column();
+    }
 }

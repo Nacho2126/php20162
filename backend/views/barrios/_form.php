@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use backend\controllers\DepartamentoController;
+
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Barrios */
@@ -14,7 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'Departamento_idDepartamento')->textInput() ?>
+	<?= $form->field($model, 'Departamento_idDepartamento')->dropdownList(DepartamentoController::findAll(), ['prompt' => Yii::t('app', 'Seleccione una Departamento')]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

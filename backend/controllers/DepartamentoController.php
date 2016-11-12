@@ -1,6 +1,6 @@
 <?php
 
-namespace app\controllers;
+namespace backend\controllers;
 
 use Yii;
 use app\models\Departamento;
@@ -120,5 +120,11 @@ class DepartamentoController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+    /**
+    * Rertorno todos los Departamentos
+    **/
+    public function findAll(){
+        return Departamento::find()->select(['nombre', 'idDepartamento'])->indexBy('idDepartamento')->column();
     }
 }

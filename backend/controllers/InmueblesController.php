@@ -121,4 +121,10 @@ class InmueblesController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    /**
+    * Rertorno todos los Departamentos
+    **/
+    public function findAll(){
+        return Inmuebles::find()->select(['nombre', 'idInmuebles'])->indexBy('idInmuebles')->column();
+    }
 }

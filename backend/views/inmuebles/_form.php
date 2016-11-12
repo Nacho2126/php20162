@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+use backend\controllers\ClientesController;
 /* @var $this yii\web\View */
 /* @var $model app\models\Inmuebles */
 /* @var $form yii\widgets\ActiveForm */
@@ -44,8 +44,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'cordy')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'Clientes_idClientes')->textInput() ?>
-
+    <?= $form->field($model, 'Clientes_idClientes')->dropdownList(ClientesController::findAll(), ['prompt' => Yii::t('app', 'Seleccione una Cliente')]) ?>
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

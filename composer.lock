@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "738c2a756ef0186c34e3a9286e881805",
-    "content-hash": "e30e9423fabfe7aaa452f867e818ef15",
+    "hash": "fd51830fb1f9734fe85e26538f57fbae",
+    "content-hash": "80149d579a631a6f21ddbec338b9c317",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -356,6 +356,48 @@
                 "html"
             ],
             "time": "2016-07-16 12:58:58"
+        },
+        {
+            "name": "kartik-v/dependent-dropdown",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/dependent-dropdown.git",
+                "reference": "32e60bc4e7fc935629e266db7dc0a5a62cee6a62"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/dependent-dropdown/zipball/32e60bc4e7fc935629e266db7dc0a5a62cee6a62",
+                "reference": "32e60bc4e7fc935629e266db7dc0a5a62cee6a62",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "kartik\\plugins\\depdrop\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "A multi level dependent dropdown JQuery plugin that allows nested dependencies.",
+            "homepage": "https://github.com/kartik-v/dependent-dropdown",
+            "keywords": [
+                "dependent",
+                "dropdown",
+                "jquery",
+                "option",
+                "select"
+            ],
+            "time": "2016-10-08 18:29:16"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2907,7 +2949,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "dektrium/yii2-user": 20
+        "dektrium/yii2-user": 20,
+        "kartik-v/dependent-dropdown": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -23,7 +23,7 @@ class Barrios extends \yii\db\ActiveRecord
     {
         return 'Barrios';
     }
-
+    public $departamento_id;
     /**
      * @inheritdoc
      */
@@ -44,7 +44,7 @@ class Barrios extends \yii\db\ActiveRecord
         return [
             'idBarrios' => 'Id Barrios',
             'nombre' => 'Nombre',
-            'Departamento_idDepartamento' => 'Departamento Id Departamento',
+            'Departamento_idDepartamento' => 'Departamento',
         ];
     }
 
@@ -63,4 +63,5 @@ class Barrios extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Inmuebles::className(), ['Barrios_idBarrios' => 'idBarrios']);
     }
+    
 }
