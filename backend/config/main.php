@@ -13,6 +13,17 @@ return [
     'bootstrap' => ['log'],
     'modules' => [],
     'components' => [
+        'assetManager' => [
+            'bundles' => [
+                'dosamigos\google\maps\MapAsset' => [
+                    'options' => [
+                        'key' => 'this_is_my_key',
+                        'language' => 'id',
+                        'version' => '3.1.18'
+                    ]
+                ]
+            ]
+        ],
         'request' => [
             'csrfParam' => '_csrf-backend',
         ],
@@ -25,6 +36,13 @@ return [
             // this is the name of the session cookie used for login on the backend
             'name' => 'advanced-backend',
         ],
+        /*'urlManager' => [
+            'class' => 'yii\web\UrlManager',
+            // Disable index.php
+            'showScriptName' => false,
+            // Disable r= routes
+            'enablePrettyUrl' => true,
+        ],*/
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
