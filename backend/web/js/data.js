@@ -1,12 +1,7 @@
 $(document).on("ready",main);
 
    			function main(){
-   				$('#nav').localScroll(800);
-				$('#dat').parallax("50%",0.1);
-				$('#gmaps').parallax("50%",0.1);
-				$('#st').parallax("50%",0.3);
-                    console.log("hola");
-				/*console.log("Pepe"); 		<script type="text/javascript" src="js/parallax.min.js">*/
+   				/*console.log("Pepe"); 		<script type="text/javascript" src="js/parallax.min.js">*/
 				$("#buscar").on("click",function(){
                  
         		/*var texto="";*/

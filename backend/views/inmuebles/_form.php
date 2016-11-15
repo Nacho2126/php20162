@@ -33,7 +33,7 @@ use backend\controllers\ClientesController;
     <?= $form->field($model, 'garantia')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'tipo_operacion')->textInput(['maxlength' => true]) ?>
-
+    
     <?= $form->field($model, 'direccion')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'tipoinmueble_idtipoinmueble')->textInput() ?>
