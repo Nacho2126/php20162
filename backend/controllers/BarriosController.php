@@ -121,4 +121,7 @@ class BarriosController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    public function findAll(){
+        return Barrios::find()->select(['nombre', 'idBarrios'])->indexBy('idBarrios')->column();
+    }
 }

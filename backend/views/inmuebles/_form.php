@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use backend\controllers\ClientesController;
+use backend\controllers\DepartamentoController;
+use backend\controllers\TipoInmuebleController;
 /* @var $this yii\web\View */
 /* @var $model app\models\Inmuebles */
 /* @var $form yii\widgets\ActiveForm */
@@ -35,10 +37,14 @@ use backend\controllers\ClientesController;
     <?= $form->field($model, 'tipo_operacion')->textInput(['maxlength' => true]) ?>
     
     <?= $form->field($model, 'direccion')->textInput(['maxlength' => true]) ?>
-
+    <br>
+    <input type="button" id="buscar" value="Buscar en GoogleMaps">
+    <article id="map_article">
+    </article>
+    <br>
     <?= $form->field($model, 'tipoinmueble_idtipoinmueble')->textInput() ?>
 
-    <?= $form->field($model, 'Barrios_idBarrios')->textInput() ?>
+    <?= $form->field($model, 'Barrios_idBarrios')->dropdownList(BarriosController::findAll(), ['prompt' => Yii::t('app', 'Seleccione una Departamento')]) ?>
 
     <?= $form->field($model, 'cordx')->textInput(['maxlength' => true]) ?>
 
@@ -48,7 +54,10 @@ use backend\controllers\ClientesController;
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
-
+    
     <?php ActiveForm::end(); ?>
 
 </div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVcvukh6sDH3sPIqDiK787_k7-EH8E6oU&callback=initMap"
+    async defer></script>
+</script>
