@@ -121,4 +121,7 @@ class TipoinmuebleController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    public function findAll(){
+        return Tipoinmueble::find()->select(['nombre', 'idtipoinmueble'])->indexBy('idtipoinmueble')->column();
+    }
 }

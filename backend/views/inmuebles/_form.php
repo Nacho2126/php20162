@@ -3,8 +3,9 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use backend\controllers\ClientesController;
-use backend\controllers\DepartamentoController;
-use backend\controllers\TipoInmuebleController;
+use backend\controllers\BarriosController;
+use backend\controllers\TipoinmuebleController;
+
 /* @var $this yii\web\View */
 /* @var $model app\models\Inmuebles */
 /* @var $form yii\widgets\ActiveForm */
@@ -42,7 +43,7 @@ use backend\controllers\TipoInmuebleController;
     <article id="map_article">
     </article>
     <br>
-    <?= $form->field($model, 'tipoinmueble_idtipoinmueble')->textInput() ?>
+    <?= $form->field($model, 'tipoinmueble_idtipoinmueble')->dropdownList(TipoInmuebleController::findAll(), ['prompt' => Yii::t('app', 'Seleccione el tipo de Inmueble')]) ?>
 
     <?= $form->field($model, 'Barrios_idBarrios')->dropdownList(BarriosController::findAll(), ['prompt' => Yii::t('app', 'Seleccione una Departamento')]) ?>
 
@@ -50,10 +51,23 @@ use backend\controllers\TipoInmuebleController;
 
     <?= $form->field($model, 'cordy')->textInput(['maxlength' => true]) ?>
 
+
     <?= $form->field($model, 'Clientes_idClientes')->dropdownList(ClientesController::findAll(), ['prompt' => Yii::t('app', 'Seleccione una Cliente')]) ?>
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
+    
+    <h4>Subir archivos</h4>
+
+    <?php $form = ActiveForm::begin([
+         "method" => "post",
+         "enableClientValidation" => true,
+         "options" => ["enctype" => "multipart/form-data"],
+         ]);
+    ?>
+    <?= $form->field($model, "file")->fileInput(['multiple' => true]) ?>
+
+    <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+
+    <?php $form->end() ?>
+
     
     <?php ActiveForm::end(); ?>
 

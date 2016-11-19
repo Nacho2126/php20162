@@ -25,6 +25,7 @@ use Yii;
  * @property string $cordx
  * @property string $cordy
  * @property integer $Clientes_idClientes
+ * @property string $imagen
  *
  * @property Favoritos[] $favoritos
  * @property Tipoinmueble $tipoinmuebleIdtipoinmueble
@@ -53,6 +54,7 @@ class Inmuebles extends \yii\db\ActiveRecord
             [['nombre'], 'string', 'max' => 255],
             [['descripcion'], 'string', 'max' => 5000],
             [['garantia', 'tipo_operacion', 'direccion', 'cordx', 'cordy'], 'string', 'max' => 45],
+            [['file'], 'string', 'max' => 100],
             [['tipoinmueble_idtipoinmueble'], 'exist', 'skipOnError' => true, 'targetClass' => Tipoinmueble::className(), 'targetAttribute' => ['tipoinmueble_idtipoinmueble' => 'idtipoinmueble']],
             [['Barrios_idBarrios'], 'exist', 'skipOnError' => true, 'targetClass' => Barrios::className(), 'targetAttribute' => ['Barrios_idBarrios' => 'idBarrios']],
             [['Clientes_idClientes'], 'exist', 'skipOnError' => true, 'targetClass' => Clientes::className(), 'targetAttribute' => ['Clientes_idClientes' => 'idClientes']],
@@ -68,22 +70,42 @@ class Inmuebles extends \yii\db\ActiveRecord
             'idInmuebles' => 'Id Inmuebles',
             'nombre' => 'Nombre',
             'descripcion' => 'Descripcion',
-            'cant_dormitorios' => 'Cant Dormitorios',
-            'cant_banios' => 'Cant Banios',
-            'mts_totales' => 'Mts Totales',
-            'mts_edificados' => 'Mts Edificados',
+            'cant_dormitorios' => 'Cantidad Dormitorios',
+            'cant_banios' => 'Cantidad Banios',
+            'mts_totales' => 'Metros Totales',
+            'mts_edificados' => 'Metros Edificados',
             'cochera' => 'Cochera',
             'patio' => 'Patio',
-            'cant_pisos' => 'Cant Pisos',
+            'cant_pisos' => 'Cantidad de Pisos',
             'garantia' => 'Garantia',
             'tipo_operacion' => 'Tipo Operacion',
             'direccion' => 'Direccion',
-            'tipoinmueble_idtipoinmueble' => 'Tipoinmueble Idtipoinmueble',
-            'Barrios_idBarrios' => 'Barrios Id Barrios',
-            'cordx' => 'Cordx',
-            'cordy' => 'Cordy',
-            'Clientes_idClientes' => 'Clientes Id Clientes',
+            'tipoinmueble_idtipoinmueble' => 'Tipoinmueble',
+            'Barrios_idBarrios' => 'Barrios',
+            'cordx' => 'Cordenada X',
+            'cordy' => 'Cordenada Y',
+            'file' => 'File',
+            'Clientes_idClientes' => 'Clientes',
         ];
+    }
+    public function actionUpload()
+    {
+  
+      $model = new FormUpload;
+      $msg = null;
+      
+      if ($model->load(Yii::$app->request->post()))
+      {
+       $model->file = UploadedFile::getInstances($model, 'file');
+
+       if ($model->file && $model->validate()) {
+        foreach ($model->file as $file) {
+         $file->saveAs('img/inmuebles/' . $file->baseName . '.' . $file->extension);
+         $msg = "<p><strong class='label label-info'>subida realizada con éxito</strong></p>";
+        }
+       }
+      }
+      return $this->render("upload", ["model" => $model, "msg" => $msg]);
     }
 
     /**

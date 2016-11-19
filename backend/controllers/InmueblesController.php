@@ -5,6 +5,8 @@ namespace backend\controllers;
 use Yii;
 use app\models\Inmuebles;
 use app\models\InmueblesSearch;
+use app\models\FormUpload;
+use yii\web\UploadedFile;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -127,4 +129,5 @@ class InmueblesController extends Controller
     public function findAll(){
         return Inmuebles::find()->select(['nombre', 'idInmuebles'])->indexBy('idInmuebles')->column();
     }
+    
 }
