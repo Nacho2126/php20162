@@ -15,6 +15,12 @@ class SiteController extends Controller
     /**
      * @inheritdoc
      */
+
+    public function anctionLang()
+    {
+        return $this->render("Lang");
+    }
+
     public function behaviors()
     {
         return [
