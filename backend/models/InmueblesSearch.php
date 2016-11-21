@@ -18,7 +18,7 @@ class InmueblesSearch extends Inmuebles
     public function rules()
     {
         return [
-            [['idInmuebles', 'cant_dormitorios', 'cant_banios', 'mts_totales', 'mts_edificados', 'cant_pisos', 'tipoinmueble_idtipoinmueble', 'Barrios_idBarrios', 'Clientes_idClientes'], 'integer'],
+            [['idInmuebles', 'cant_dormitorios', 'cant_banios', 'mts_totales', 'mts_edificados', 'cant_pisos', 'tipoinmueble_idtipoinmueble', 'Barrios_idBarrios', 'user_id'], 'integer'],
             [['nombre', 'descripcion', 'garantia', 'tipo_operacion', 'direccion', 'cordx', 'cordy'], 'safe'],
             [['cochera', 'patio'], 'boolean'],
         ];
@@ -70,7 +70,7 @@ class InmueblesSearch extends Inmuebles
             'cant_pisos' => $this->cant_pisos,
             'tipoinmueble_idtipoinmueble' => $this->tipoinmueble_idtipoinmueble,
             'Barrios_idBarrios' => $this->Barrios_idBarrios,
-            'Clientes_idClientes' => $this->Clientes_idClientes,
+            'user_id' => $this->user_id,
         ]);
 
         $query->andFilterWhere(['like', 'nombre', $this->nombre])

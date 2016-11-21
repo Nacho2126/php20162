@@ -3,23 +3,20 @@
 namespace backend\controllers;
 
 use Yii;
-use app\models\Inmuebles;
-use app\models\InmueblesSearch;
-use app\models\FormUpload;
-use yii\web\UploadedFile;
+use app\models\User;
+use app\models\UserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * InmueblesController implements the CRUD actions for Inmuebles model.
+ * UserController implements the CRUD actions for User model.
  */
-class InmueblesController extends Controller
+class UserController extends Controller
 {
     /**
      * @inheritdoc
      */
-    public $file;
     public function behaviors()
     {
         return [
@@ -33,12 +30,12 @@ class InmueblesController extends Controller
     }
 
     /**
-     * Lists all Inmuebles models.
+     * Lists all User models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new InmueblesSearch();
+        $searchModel = new UserSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -48,7 +45,7 @@ class InmueblesController extends Controller
     }
 
     /**
-     * Displays a single Inmuebles model.
+     * Displays a single User model.
      * @param integer $id
      * @return mixed
      */
@@ -60,24 +57,16 @@ class InmueblesController extends Controller
     }
 
     /**
-     * Creates a new Inmuebles model.
+     * Creates a new User model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Inmuebles();
+        $model = new User();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            
-
-            $model->file = UploadedFile::getInstances($model, 'file');
-            foreach ($model->file as $file) {
-                $file->saveAs('uploads/inmuebles/' . $file->baseName . '.' . $file->extension);
-            }
-            
-
-            return $this->redirect(['view', 'id' => $model->idInmuebles]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -86,7 +75,7 @@ class InmueblesController extends Controller
     }
 
     /**
-     * Updates an existing Inmuebles model.
+     * Updates an existing User model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +85,7 @@ class InmueblesController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->idInmuebles]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -105,7 +94,7 @@ class InmueblesController extends Controller
     }
 
     /**
-     * Deletes an existing Inmuebles model.
+     * Deletes an existing User model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -118,39 +107,21 @@ class InmueblesController extends Controller
     }
 
     /**
-     * Finds the Inmuebles model based on its primary key value.
+     * Finds the User model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Inmuebles the loaded model
+     * @return User the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Inmuebles::findOne($id)) !== null) {
+        if (($model = User::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-    /**
-    * Rertorno todos los Departamentos
-    **/
     public function findAll(){
-        return Inmuebles::find()->select(['nombre', 'idInmuebles'])->indexBy('idInmuebles')->column();
+        return User::find()->select(['username', 'id'])->indexBy('id')->column();
     }
-    public function actionUpload()
-    {
-        $model = new FormUpload();
-
-        if (Yii::$app->request->isPost) {
-            $model->file = UploadedFile::getInstances($model, 'file');
-            if ($model->upload()) {
-                // file is uploaded successfully
-                return;
-            }
-        }
-
-        return $this->render('upload', ['model' => $model]);    
-        }
-    
 }

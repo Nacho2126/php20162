@@ -30,13 +30,14 @@ use Yii;
  * @property Favoritos[] $favoritos
  * @property Tipoinmueble $tipoinmuebleIdtipoinmueble
  * @property Barrios $barriosIdBarrios
- * @property Clientes $clientesIdClientes
+ * @property Clientes $user_id
  */
 class Inmuebles extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
+
     public static function tableName()
     {
         return 'Inmuebles';
@@ -48,8 +49,8 @@ class Inmuebles extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nombre', 'descripcion', 'tipoinmueble_idtipoinmueble', 'Barrios_idBarrios', 'Clientes_idClientes'], 'required'],
-            [['cant_dormitorios', 'cant_banios', 'mts_totales', 'mts_edificados', 'cant_pisos', 'tipoinmueble_idtipoinmueble', 'Barrios_idBarrios', 'Clientes_idClientes'], 'integer'],
+            [['nombre', 'descripcion', 'tipoinmueble_idtipoinmueble', 'Barrios_idBarrios', 'user_id'], 'required'],
+            [['cant_dormitorios', 'cant_banios', 'mts_totales', 'mts_edificados', 'cant_pisos', 'tipoinmueble_idtipoinmueble', 'Barrios_idBarrios', 'user_id'], 'integer'],
             [['cochera', 'patio'], 'boolean'],
             [['nombre'], 'string', 'max' => 255],
             [['descripcion'], 'string', 'max' => 5000],
@@ -57,7 +58,7 @@ class Inmuebles extends \yii\db\ActiveRecord
             [['file'], 'string', 'max' => 100],
             [['tipoinmueble_idtipoinmueble'], 'exist', 'skipOnError' => true, 'targetClass' => Tipoinmueble::className(), 'targetAttribute' => ['tipoinmueble_idtipoinmueble' => 'idtipoinmueble']],
             [['Barrios_idBarrios'], 'exist', 'skipOnError' => true, 'targetClass' => Barrios::className(), 'targetAttribute' => ['Barrios_idBarrios' => 'idBarrios']],
-            [['Clientes_idClientes'], 'exist', 'skipOnError' => true, 'targetClass' => Clientes::className(), 'targetAttribute' => ['Clientes_idClientes' => 'idClientes']],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'idClientes']],
         ];
     }
 
@@ -84,28 +85,9 @@ class Inmuebles extends \yii\db\ActiveRecord
             'Barrios_idBarrios' => 'Barrios',
             'cordx' => 'Cordenada X',
             'cordy' => 'Cordenada Y',
-            'file' => 'File',
-            'Clientes_idClientes' => 'Clientes',
+            'file[]' => 'File',
+            'user_id' => 'Clientes',
         ];
-    }
-    public function actionUpload()
-    {
-  
-      $model = new FormUpload;
-      $msg = null;
-      
-      if ($model->load(Yii::$app->request->post()))
-      {
-       $model->file = UploadedFile::getInstances($model, 'file');
-
-       if ($model->file && $model->validate()) {
-        foreach ($model->file as $file) {
-         $file->saveAs('img/inmuebles/' . $file->baseName . '.' . $file->extension);
-         $msg = "<p><strong class='label label-info'>subida realizada con éxito</strong></p>";
-        }
-       }
-      }
-      return $this->render("upload", ["model" => $model, "msg" => $msg]);
     }
 
     /**
@@ -137,6 +119,6 @@ class Inmuebles extends \yii\db\ActiveRecord
      */
     public function getClientesIdClientes()
     {
-        return $this->hasOne(Clientes::className(), ['idClientes' => 'Clientes_idClientes']);
+        return $this->hasOne(User::className(), ['user_id' => 'user_id']);
     }
 }

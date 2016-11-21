@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use backend\controllers\ClientesController;
+use backend\controllers\UserController;
 use backend\controllers\BarriosController;
 use backend\controllers\TipoinmuebleController;
 
@@ -13,7 +13,12 @@ use backend\controllers\TipoinmuebleController;
 
 <div class="inmuebles-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+         "method" => "post",
+         "enableClientValidation" => true,
+         "options" => ["enctype" => "multipart/form-data"],
+         ]);
+    ?>
 
     <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
 
@@ -52,21 +57,16 @@ use backend\controllers\TipoinmuebleController;
     <?= $form->field($model, 'cordy')->textInput(['maxlength' => true]) ?>
 
 
-    <?= $form->field($model, 'Clientes_idClientes')->dropdownList(ClientesController::findAll(), ['prompt' => Yii::t('app', 'Seleccione una Cliente')]) ?>
+    <?= $form->field($model, 'user_id')->dropdownList(UserController::findAll(), ['prompt' => Yii::t('app', 'Seleccione una Cliente')]) ?>
     
     <h4>Subir archivos</h4>
 
-    <?php $form = ActiveForm::begin([
-         "method" => "post",
-         "enableClientValidation" => true,
-         "options" => ["enctype" => "multipart/form-data"],
-         ]);
-    ?>
-    <?= $form->field($model, "file")->fileInput(['multiple' => true]) ?>
+    <?= $form->field($model, 'file[]')->fileInput(['multiple' => true, 'accept' => 'image/*']) ?>  
+   
 
     <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
 
-    <?php $form->end() ?>
+    
 
     
     <?php ActiveForm::end(); ?>
