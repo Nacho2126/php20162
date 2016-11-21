@@ -20,7 +20,8 @@
         "yiisoft/yii2-swiftmailer": "~2.0.0",
         "dektrium/yii2-user": "0.9.*@dev",
         "kartik-v/dependent-dropdown": "dev-master",
-        "2amigos/yii2-google-maps-library": "*"
+        "2amigos/yii2-google-maps-library": "*",
+        "dmstr/yii2-adminlte-asset": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
