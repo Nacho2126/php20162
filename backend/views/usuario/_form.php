@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'password_hash')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'password_hash')->passwordInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'auth_key')->textInput(['maxlength' => true]) ?>
 
@@ -27,12 +27,16 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'blocked_at')->textInput() ?>
 
     <?= $form->field($model, 'registration_ip')->textInput(['maxlength' => true]) ?>
+    <?php
+    $hoy = getdate();
+    
+    ?>
+    <?= $form->field($model, 'created_at')->textInput(['readonly' => true, 'value' => $hoy[0]]) ?>
+    
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
+    <?= $form->field($model, 'updated_at')->textInput(['readonly' => true, 'value' => $hoy[0]])?>
 
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'flags')->textInput() ?>
+    <?= $form->field($model, 'updated_at')->textInput(['readonly' => true, 'value' => 0])?>
 
     <?= $form->field($model, 'ci_user')->textInput(['maxlength' => true]) ?>
 

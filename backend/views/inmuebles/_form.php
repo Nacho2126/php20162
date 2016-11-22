@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use backend\controllers\UserController;
+use backend\controllers\UsuarioController;
 use backend\controllers\BarriosController;
 use backend\controllers\TipoinmuebleController;
 
@@ -57,7 +57,7 @@ use backend\controllers\TipoinmuebleController;
     <?= $form->field($model, 'cordy')->textInput(['maxlength' => true]) ?>
 
 
-    <?= $form->field($model, 'user_id')->dropdownList(UserController::findAll(), ['prompt' => Yii::t('app', 'Seleccione una Cliente')]) ?>
+    <?= $form->field($model, 'user_id')->dropdownList(UsuarioController::findAll(), ['prompt' => Yii::t('app', 'Seleccione una Cliente')]) ?>
     
     <h4>Subir archivos</h4>
 

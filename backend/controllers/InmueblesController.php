@@ -10,7 +10,7 @@ use yii\web\UploadedFile;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii\helpers\FileHelper;
 /**
  * InmueblesController implements the CRUD actions for Inmuebles model.
  */
@@ -67,16 +67,20 @@ class InmueblesController extends Controller
     public function actionCreate()
     {
         $model = new Inmuebles();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+    if ($model->load(Yii::$app->request->post())  && $model->validate()) {
             
-
-            $model->file = UploadedFile::getInstances($model, 'file');
-            foreach ($model->file as $file) {
-                $file->saveAs('uploads/inmuebles/' . $file->baseName . '.' . $file->extension);
+            if($model->save()) {           
+                $filePath = 'uploads/inmuebles/'.$model->idInmuebles;
+                FileHelper::createDirectory($filePath);
+                $model->file = UploadedFile::getInstances($model, 'file');
+                foreach ($model->file as $i=>$file) {
+                    $file->saveAs($filePath . '/' . $i . '.' . $file->extension);
+                }
+            } else {                
+                return $this->render('create', [
+                    'model' => $model,
+                ]);
             }
-            
-
             return $this->redirect(['view', 'id' => $model->idInmuebles]);
         } else {
             return $this->render('create', [

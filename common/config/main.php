@@ -24,7 +24,22 @@ return [
     'modules' => [
 	    'user' => [
 		'class' => 'dektrium\user\Module',
+        'admins' => ['jmrsm01'],
+        /*'modelMap' => [
+                'User' => 'common\models\User',
+                'RegistrationForm' => 'common\models\RegistrationForm',
+            ]*/
 	    ],
 	],
+    /*'authClientCollection' => [
+        'class'   => \yii\authclient\Collection::className(),
+        /*'clients' => [
+            'google' => [
+                    'class'        => 'dektrium\user\clients\Google',
+                    'clientId'     => 'CLIENT_ID',
+                    'clientSecret' => 'CLIENT_SECRET',
+                ],
+        ],
+    ],*/
 
 ];

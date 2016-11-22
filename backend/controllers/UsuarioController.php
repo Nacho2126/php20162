@@ -64,8 +64,9 @@ class UsuarioController extends Controller
     public function actionCreate()
     {
         $model = new Usuario();
-
+        
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -120,5 +121,8 @@ class UsuarioController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+    public function findAll(){
+        return Usuario::find()->select(['username', 'id'])->indexBy('id')->column();
     }
 }

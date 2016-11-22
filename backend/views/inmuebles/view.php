@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'Barrios_idBarrios',
             'cordx',
             'cordy',
-            'Clientes_idClientes',
+            'user_id',
         ],
     ]) ?>
 

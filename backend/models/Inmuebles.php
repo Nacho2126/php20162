@@ -24,7 +24,7 @@ use Yii;
  * @property integer $Barrios_idBarrios
  * @property string $cordx
  * @property string $cordy
- * @property integer $Clientes_idClientes
+ * @property integer $user_id
  * @property string $imagen
  *
  * @property Favoritos[] $favoritos
@@ -37,7 +37,7 @@ class Inmuebles extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-
+    public $file;
     public static function tableName()
     {
         return 'Inmuebles';
@@ -55,10 +55,10 @@ class Inmuebles extends \yii\db\ActiveRecord
             [['nombre'], 'string', 'max' => 255],
             [['descripcion'], 'string', 'max' => 5000],
             [['garantia', 'tipo_operacion', 'direccion', 'cordx', 'cordy'], 'string', 'max' => 45],
-            [['file'], 'string', 'max' => 100],
+            [['file'], 'file','extensions'=>'jpg,png','maxFiles'=>10],
             [['tipoinmueble_idtipoinmueble'], 'exist', 'skipOnError' => true, 'targetClass' => Tipoinmueble::className(), 'targetAttribute' => ['tipoinmueble_idtipoinmueble' => 'idtipoinmueble']],
             [['Barrios_idBarrios'], 'exist', 'skipOnError' => true, 'targetClass' => Barrios::className(), 'targetAttribute' => ['Barrios_idBarrios' => 'idBarrios']],
-            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'idClientes']],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Usuario::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
 
@@ -119,6 +119,6 @@ class Inmuebles extends \yii\db\ActiveRecord
      */
     public function getClientesIdClientes()
     {
-        return $this->hasOne(User::className(), ['user_id' => 'user_id']);
+        return $this->hasOne(Usuario::className(), ['user_id' => 'user_id']);
     }
 }

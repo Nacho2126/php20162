@@ -21,7 +21,7 @@ $fieldOptions2 = [
 
 <div class="login-box">
     <div class="login-logo">
-        <a href="#"><b>Admin</b>LTE</a>
+        <a href="#"><b>QuieroCasa</b></a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
@@ -63,7 +63,8 @@ $fieldOptions2 = [
         <!-- /.social-auth-links -->
 
         <a href="#">I forgot my password</a><br>
-        <a href="register.html" class="text-center">Register a new membership</a>
+        <?= Html::a(Yii::t('user', 'Don\'t have an account? Sign up!'), ['/user/registration/register']) ?>
+       <!-- <a href="register.html" class="text-center">Register a new membership</a>-->
 
     </div>
     <!-- /.login-box-body -->

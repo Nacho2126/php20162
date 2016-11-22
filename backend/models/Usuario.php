@@ -47,7 +47,7 @@ class Usuario extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'email', 'password_hash', 'auth_key', 'created_at', 'updated_at'], 'required'],
+            [['username', 'email', 'password_hash'], 'required'],
             [['confirmed_at', 'blocked_at', 'created_at', 'updated_at', 'flags'], 'integer'],
             [['username', 'email', 'unconfirmed_email'], 'string', 'max' => 255],
             [['password_hash'], 'string', 'max' => 60],
