@@ -22,13 +22,46 @@ use yii\helpers\Html;
                 <!-- Messages: style can be found in dropdown.less-->
                 
                 <!-- Tasks: style can be found in dropdown.less -->
-                
-                <!-- User Account: style can be found in dropdown.less -->
 
+                <!-- User Account: style can be found in dropdown.less -->
+                <?php if (Yii::$app->user->isGuest) { ?>
+                    
+                        <li class="dropdown user user-menu">
+                        <?= Html::a(
+                                        'Login',
+                                        ['user/security/login'],
+                                        ['data-method' => 'post', 'class' => 'nav navbar-nav']
+                        ) ?>
+                        </li>    
+                <?php
+                }
+                ?>
                 <?php if (!Yii::$app->user->isGuest) { ?>
                     <li class="dropdown user user-menu">
+                            <?= Html::a(
+                                        'ABM Clientes',
+                                        ['/user/admin/index'],
+                                        ['data-method' => 'post', 'class' => 'nav navbar-nav']
+                            ) ?>
+                        </li>
+                        <li class="dropdown user user-menu">
+                            <?= Html::a(
+                                        'ABM Inmuebles',
+                                        ['/inmuebles/index'],
+                                        ['data-method' => 'post', 'class' => 'nav navbar-nav']
+                            ) ?>
+                        </li>
+                        <li class="dropdown user user-menu">
+                            <?= Html::a(
+                                        'Tipo Inmuebles',
+                                        ['/tipoinmueble/index'],
+                                        ['data-method' => 'post', 'class' => 'nav navbar-nav']
+                            ) ?>
+                        </li>
+                    <li class="dropdown user user-menu">
+                        
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="http://www.gravatar.com/avatar/<?php echo md5( strtolower( trim(Yii::$app->user->identity->email) ) );?>" alt="@" width="32" height="32" class="user-image" />
+                            <img src="http://www.gravatar.com/avatar/<?php echo md5( strtolower( trim(Yii::$app->user->identity->email) ) );?>" alt="User Image" width="20" height="20" class="img-circle" />
                             <span class="hidden-xs"><?php Yii::$app->user->identity->username; ?></span>
                         </a>
                         <ul class="dropdown-menu">

@@ -3,6 +3,14 @@ return [
     'language' => 'es',
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
+        /*'authClientCollection' => [
+        'class'   => 'yii\authclient\Collection::className()',
+        'facebook' => [
+                'class'        => 'dektrium\user\clients\Facebook',
+                'clientId'     => '1196216720447894',
+                'clientSecret' => '923d56895e0ae6c96acb226122f4d6aa',
+            ],
+        ],*/
           'i18n' => [
         'translations' => [
             'frontend*' => [
@@ -31,15 +39,6 @@ return [
             ]*/
 	    ],
 	],
-    /*'authClientCollection' => [
-        'class'   => \yii\authclient\Collection::className(),
-        /*'clients' => [
-            'google' => [
-                    'class'        => 'dektrium\user\clients\Google',
-                    'clientId'     => 'CLIENT_ID',
-                    'clientSecret' => 'CLIENT_SECRET',
-                ],
-        ],
-    ],*/
+    
 
 ];
