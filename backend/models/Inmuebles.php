@@ -119,6 +119,6 @@ class Inmuebles extends \yii\db\ActiveRecord
      */
     public function getClientesIdClientes()
     {
-        return $this->hasOne(Usuario::className(), ['user_id' => 'user_id']);
+        return $this->hasOne(Usuario::className(), ['id' => 'user_id']);
     }
 }

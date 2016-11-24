@@ -52,10 +52,10 @@ class InmueblesController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id)
+    public function actionView($idInmuebles)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $this->findModel($idInmuebles),
         ]);
     }
 
@@ -69,10 +69,15 @@ class InmueblesController extends Controller
         $model = new Inmuebles();
     if ($model->load(Yii::$app->request->post())  && $model->validate()) {
             
-            if($model->save()) {           
-                $filePath = 'uploads/inmuebles/'.$model->idInmuebles;
-                FileHelper::createDirectory($filePath);
+            if($model->save()) {
+                $cont=0;           
                 $model->file = UploadedFile::getInstances($model, 'file');
+                foreach ($model->file as $file) {
+                    $cont++;
+                }
+                
+                $filePath = 'uploads/inmuebles/'.$model->idInmuebles.'_'.$cont;
+                FileHelper::createDirectory($filePath);
                 foreach ($model->file as $i=>$file) {
                     $file->saveAs($filePath . '/' . $i . '.' . $file->extension);
                 }
@@ -95,9 +100,9 @@ class InmueblesController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
+    public function actionUpdate($idInmuebles)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel($idInmuebles);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->idInmuebles]);
