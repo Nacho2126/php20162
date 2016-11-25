@@ -18,7 +18,7 @@ class FavoritosSearch extends Favoritos
     public function rules()
     {
         return [
-            [['Clientes_idClientes', 'Inmuebles_idInmuebles'], 'integer'],
+            [['Inmuebles_idInmuebles', 'user_id'], 'integer'],
             [['idFavorito'], 'safe'],
         ];
     }
@@ -59,8 +59,8 @@ class FavoritosSearch extends Favoritos
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'Clientes_idClientes' => $this->Clientes_idClientes,
             'Inmuebles_idInmuebles' => $this->Inmuebles_idInmuebles,
+            'user_id' => $this->user_id,
         ]);
 
         $query->andFilterWhere(['like', 'idFavorito', $this->idFavorito]);

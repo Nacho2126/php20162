@@ -7,12 +7,12 @@ use Yii;
 /**
  * This is the model class for table "Favoritos".
  *
- * @property integer $Clientes_idClientes
  * @property integer $Inmuebles_idInmuebles
  * @property string $idFavorito
+ * @property integer $user_id
  *
- * @property Clientes $clientesIdClientes
  * @property Inmuebles $inmueblesIdInmuebles
+ * @property Usuario $user
  */
 class Favoritos extends \yii\db\ActiveRecord
 {
@@ -30,10 +30,11 @@ class Favoritos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Clientes_idClientes', 'Inmuebles_idInmuebles'], 'required'],
-            [['Clientes_idClientes', 'Inmuebles_idInmuebles'], 'integer'],
-            [['Clientes_idClientes'], 'exist', 'skipOnError' => true, 'targetClass' => Clientes::className(), 'targetAttribute' => ['Clientes_idClientes' => 'idClientes']],
+            [['Inmuebles_idInmuebles', 'idFavorito', 'user_id'], 'required'],
+            [['Inmuebles_idInmuebles', 'user_id'], 'integer'],
+            [['idFavorito'], 'string', 'max' => 45],
             [['Inmuebles_idInmuebles'], 'exist', 'skipOnError' => true, 'targetClass' => Inmuebles::className(), 'targetAttribute' => ['Inmuebles_idInmuebles' => 'idInmuebles']],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Usuario::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
 
@@ -43,18 +44,10 @@ class Favoritos extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'Clientes_idClientes' => 'Clientes Id Clientes',
             'Inmuebles_idInmuebles' => 'Inmuebles Id Inmuebles',
             'idFavorito' => 'Id Favorito',
+            'user_id' => 'User ID',
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getClientesIdClientes()
-    {
-        return $this->hasOne(Clientes::className(), ['idClientes' => 'Clientes_idClientes']);
     }
 
     /**
@@ -63,5 +56,13 @@ class Favoritos extends \yii\db\ActiveRecord
     public function getInmueblesIdInmuebles()
     {
         return $this->hasOne(Inmuebles::className(), ['idInmuebles' => 'Inmuebles_idInmuebles']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {
+        return $this->hasOne(Usuario::className(), ['id' => 'user_id']);
     }
 }

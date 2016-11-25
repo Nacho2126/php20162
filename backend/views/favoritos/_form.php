@@ -2,8 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use backend\controllers\ClientesController;
-use backend\controllers\InmueblesController;
+
 /* @var $this yii\web\View */
 /* @var $model app\models\Favoritos */
 /* @var $form yii\widgets\ActiveForm */
@@ -13,9 +12,12 @@ use backend\controllers\InmueblesController;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'Clientes_idClientes')->dropdownList(ClientesController::findAll(), ['prompt' => Yii::t('app', 'Seleccione una Cliente')]) ?>
-    
-    <?= $form->field($model, 'Inmuebles_idInmuebles')->dropdownList(InmueblesController::findAll(), ['prompt' => Yii::t('app', 'Seleccione una Inmueble')]) ?>
+    <?= $form->field($model, 'Inmuebles_idInmuebles')->textInput() ?>
+
+    <?= $form->field($model, 'idFavorito')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'user_id')->textInput() ?>
+
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
