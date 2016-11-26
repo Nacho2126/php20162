@@ -12,31 +12,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'password_hash')->passwordInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'auth_key')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'confirmed_at')->textInput() ?>
-
-    <?= $form->field($model, 'unconfirmed_email')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'blocked_at')->textInput() ?>
-
-    <?= $form->field($model, 'registration_ip')->textInput(['maxlength' => true]) ?>
-    <?php
-    $hoy = getdate();
-    
-    ?>
-    <?= $form->field($model, 'created_at')->textInput(['readonly' => true, 'value' => $hoy[0]]) ?>
-    
-
-    <?= $form->field($model, 'updated_at')->textInput(['readonly' => true, 'value' => $hoy[0]])?>
-
-    <?= $form->field($model, 'updated_at')->textInput(['readonly' => true, 'value' => 0])?>
 
     <?= $form->field($model, 'ci_user')->textInput(['maxlength' => true]) ?>
 
