@@ -3,8 +3,8 @@
 namespace backend\controllers;
 
 use Yii;
-use app\models\Tipoinmueble;
-use app\models\TipoinmuebleSearch;
+use backend\models\Tipoinmueble;
+use backend\models\TipoinmuebleSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

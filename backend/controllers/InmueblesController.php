@@ -3,8 +3,8 @@
 namespace backend\controllers;
 
 use Yii;
-use app\models\Inmuebles;
-use app\models\InmueblesSearch;
+use backend\models\Inmuebles;
+use backend\models\InmueblesSearch;
 use app\models\FormUpload;
 use yii\web\UploadedFile;
 use yii\web\Controller;
@@ -52,10 +52,10 @@ class InmueblesController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionView($idInmuebles)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($idInmuebles),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -100,9 +100,9 @@ class InmueblesController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($idInmuebles)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($idInmuebles);
+        $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->idInmuebles]);

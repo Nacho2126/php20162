@@ -33,20 +33,20 @@ return [
             ]
         ],
         'urlManager' => [
-            'enablePrettyUrl' => false,
+            'enablePrettyUrl' => true,
             'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
-                //['class' => 'yii\rest\UrlRule', 'controller' => 'autos'],
+                
                 // CRUD Controllers
-                'HEAD <apiv:v\d+>/<controller:\w+>'              => '<apiv>/<controller>/Index',
-                'GET <apiv:v\d+>/<controller:\w+>'               => '<apiv>/<controller>/Index',
-                'HEAD <apiv:v\d+>/<controller:\w+>/<id:(\d)+>'   => '<apiv>/<controller>/View',
-                'GET <apiv:v\d+>/<controller:\w+>/<id:(\d)+>'    => '<apiv>/<controller>/View',
-                'POST <apiv:v\d+>/<controller:\w+>'              => '<apiv>/<controller>/Create', 
-                'PUT <apiv:v\d+>/<controller:\w+>/<id:(\d)+>'    => '<apiv>/<controller>/Update',
-                'PATCH <apiv:v\d+>/<controller:\w+>/<id:(\d)+>'  => '<apiv>/<controller>/Update',
-                'DELETE <apiv:v\d+>/<controller:\w+>/<id:(\d)+>' => '<apiv>/<controller>/Delete',  
+                'HEAD <apiv:v\d+>/<controller:\w+>'              => '<apiv>/<controller>/index',
+                'GET <apiv:v\d+>/<controller:\w+>'               => '<apiv>/<controller>/index',
+                'HEAD <apiv:v\d+>/<controller:\w+>/<id:(\d)+>'   => '<apiv>/<controller>/view',
+                'GET <apiv:v\d+>/<controller:\w+>/<id:(\d)+>'    => '<apiv>/<controller>/view',
+                'POST <apiv:v\d+>/<controller:\w+>'              => '<apiv>/<controller>/create', 
+                'PUT <apiv:v\d+>/<controller:\w+>/<id:(\d)+>'    => '<apiv>/<controller>/update',
+                'PATCH <apiv:v\d+>/<controller:\w+>/<id:(\d)+>'  => '<apiv>/<controller>/update',
+                'DELETE <apiv:v\d+>/<controller:\w+>/<id:(\d)+>' => '<apiv>/<controller>/delete',  
 
             ]
         ]

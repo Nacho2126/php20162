@@ -19,7 +19,7 @@ $(document).on("ready",main);
 
                 var dir_completa=$('#inmuebles-direccion').val();
 
-        		$.getJSON("https://maps.googleapis.com/maps/api/geocode/json?address="+dir_completa+"+"+region+"",function(datos){
+        		$.getJSON("https://maps.googleapis.com/maps/api/geocode/json?address="+dir_completa+"+"+"Montevideo"+"",function(datos){
 
             	$.each(datos.results,function(i,item){
 

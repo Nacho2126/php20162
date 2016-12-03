@@ -5,7 +5,7 @@ return [
             'class' => 'yii\db\Connection',
             'dsn' => 'mysql:host=localhost;dbname=obligphp',
             'username' => 'root',
-            'password' => '123',
+            'password' => 'root',
             'charset' => 'utf8',
         ],
         'mailer' => [

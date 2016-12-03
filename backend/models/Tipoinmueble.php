@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace backend\models;
 
 use Yii;
 
@@ -42,7 +42,7 @@ class Tipoinmueble extends \yii\db\ActiveRecord
         return [
             'idtipoinmueble' => 'Idtipoinmueble',
             'nombre' => 'Nombre',
-            'tipoinmueblecol' => 'Tipoinmueblecol',
+            'tipoinmueblecol' => 'Comentario',
         ];
     }
 

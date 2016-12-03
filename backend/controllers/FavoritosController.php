@@ -3,8 +3,8 @@
 namespace backend\controllers;
 
 use Yii;
-use app\models\Favoritos;
-use app\models\FavoritosSearch;
+use backend\models\Favoritos;
+use backend\models\FavoritosSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

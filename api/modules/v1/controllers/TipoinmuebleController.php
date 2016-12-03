@@ -4,15 +4,15 @@ namespace api\modules\v1\controllers;
 
 
 use yii\rest\ActiveController;
-use backend\models\Inmuebles;
+use backend\models\Tipoinmueble;
 
 
 
-class InmueblesController extends ActiveController
+class TipoinmuebleController extends ActiveController
 {
-    public $modelClass = 'backend\models\Inmuebles';
+    public $modelClass = 'backend\models\Tipoinmueble';
 
-    public function actions()
+    /*public function actions()
     {
         $actions = parent::actions();
         unset($actions['view']);
@@ -22,8 +22,8 @@ class InmueblesController extends ActiveController
     public function actionView($id){
     	// $inmueble = new Inmuebles();
     	//var_dump($inmueble->primaryKey());die;
-    	return Inmuebles::find()->where(['idInmuebles' => $id])->one();
-    }
+    	return Barrios::find()->where(['idBarrios' => $id])->one();
+    }*/ 
 
 }
 ?>
