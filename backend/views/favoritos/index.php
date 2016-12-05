@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\FavoritosSearch */
+/* @var $searchModel backend\models\FavoritosSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Favoritos';
@@ -24,8 +24,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'Inmuebles_idInmuebles',
-            'idFavorito',
+            'id_Inmueble',
+            'id',
             'user_id',
 
             ['class' => 'yii\grid\ActionColumn'],

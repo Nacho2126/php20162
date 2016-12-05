@@ -16,5 +16,16 @@ return [
             // for the mailer to send real emails.
             'useFileTransport' => true,
         ],
+        'mailer' => [
+         'class' => 'yii\swiftmailer\Mailer',
+         'transport' => [
+             'class' => 'Swift_SmtpTransport',
+             'host' => 'smtp.gmail.com',  // ej. smtp.mandrillapp.com o smtp.gmail.com
+             'username' => 'obligphp2016@gmail.com',
+             'password' => 'sandino2016',
+             'port' => '587', // El puerto 25 es un puerto común también
+             'encryption' => 'tls', // Es usado también a menudo, revise la configuración del servidor
+            ],
+         ],
     ],
 ];

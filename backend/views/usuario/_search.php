@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\UsuarioSearch */
+/* @var $model backend\models\UsuarioSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -48,6 +48,8 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'horario_atencion') ?>
 
     <?php // echo $form->field($model, 'telefono') ?>
+
+    <?php // echo $form->field($model, 'rol_id') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

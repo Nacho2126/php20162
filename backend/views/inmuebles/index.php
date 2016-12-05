@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\InmueblesSearch */
+/* @var $searchModel backend\models\InmueblesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Inmuebles';
@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'idInmuebles',
+            'id',
             'nombre',
             'descripcion',
             'cant_dormitorios',
@@ -37,11 +37,13 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'garantia',
             // 'tipo_operacion',
             // 'direccion',
-            // 'tipoinmueble_idtipoinmueble',
-            // 'Barrios_idBarrios',
+            // 'id_tipoinmueble',
+            // 'id_Barrio',
             // 'cordx',
             // 'cordy',
-            // 'Clientes_idClientes',
+            // 'file',
+            // 'user_id',
+            // 'cant_imagenes',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

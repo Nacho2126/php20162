@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\DepartamentoSearch */
+/* @var $model backend\models\DepartamentoSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -15,7 +15,7 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'idDepartamento') ?>
+    <?= $form->field($model, 'id') ?>
 
     <?= $form->field($model, 'nombre') ?>
 

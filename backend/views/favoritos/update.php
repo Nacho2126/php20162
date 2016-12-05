@@ -3,11 +3,11 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Favoritos */
+/* @var $model backend\models\Favoritos */
 
-$this->title = 'Update Favoritos: ' . $model->Inmuebles_idInmuebles;
+$this->title = 'Update Favoritos: ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Favoritos', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->Inmuebles_idInmuebles, 'url' => ['view', 'Inmuebles_idInmuebles' => $model->Inmuebles_idInmuebles, 'idFavorito' => $model->idFavorito, 'user_id' => $model->user_id]];
+$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="favoritos-update">

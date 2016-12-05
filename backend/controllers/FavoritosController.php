@@ -46,15 +46,13 @@ class FavoritosController extends Controller
 
     /**
      * Displays a single Favoritos model.
-     * @param integer $Inmuebles_idInmuebles
-     * @param string $idFavorito
-     * @param integer $user_id
+     * @param string $id
      * @return mixed
      */
-    public function actionView($Inmuebles_idInmuebles, $idFavorito, $user_id)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($Inmuebles_idInmuebles, $idFavorito, $user_id),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -68,7 +66,7 @@ class FavoritosController extends Controller
         $model = new Favoritos();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'Inmuebles_idInmuebles' => $model->Inmuebles_idInmuebles, 'idFavorito' => $model->idFavorito, 'user_id' => $model->user_id]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -79,17 +77,15 @@ class FavoritosController extends Controller
     /**
      * Updates an existing Favoritos model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $Inmuebles_idInmuebles
-     * @param string $idFavorito
-     * @param integer $user_id
+     * @param string $id
      * @return mixed
      */
-    public function actionUpdate($Inmuebles_idInmuebles, $idFavorito, $user_id)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($Inmuebles_idInmuebles, $idFavorito, $user_id);
+        $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'Inmuebles_idInmuebles' => $model->Inmuebles_idInmuebles, 'idFavorito' => $model->idFavorito, 'user_id' => $model->user_id]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -100,14 +96,12 @@ class FavoritosController extends Controller
     /**
      * Deletes an existing Favoritos model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $Inmuebles_idInmuebles
-     * @param string $idFavorito
-     * @param integer $user_id
+     * @param string $id
      * @return mixed
      */
-    public function actionDelete($Inmuebles_idInmuebles, $idFavorito, $user_id)
+    public function actionDelete($id)
     {
-        $this->findModel($Inmuebles_idInmuebles, $idFavorito, $user_id)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
@@ -115,15 +109,13 @@ class FavoritosController extends Controller
     /**
      * Finds the Favoritos model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $Inmuebles_idInmuebles
-     * @param string $idFavorito
-     * @param integer $user_id
+     * @param string $id
      * @return Favoritos the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($Inmuebles_idInmuebles, $idFavorito, $user_id)
+    protected function findModel($id)
     {
-        if (($model = Favoritos::findOne(['Inmuebles_idInmuebles' => $Inmuebles_idInmuebles, 'idFavorito' => $idFavorito, 'user_id' => $user_id])) !== null) {
+        if (($model = Favoritos::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

@@ -7,11 +7,9 @@ use Yii;
 /**
  * This is the model class for table "tipoinmueble".
  *
- * @property integer $idtipoinmueble
+ * @property integer $id
  * @property string $nombre
  * @property string $tipoinmueblecol
- *
- * @property Inmuebles[] $inmuebles
  */
 class Tipoinmueble extends \yii\db\ActiveRecord
 {
@@ -40,17 +38,9 @@ class Tipoinmueble extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idtipoinmueble' => 'Idtipoinmueble',
+            'id' => 'ID',
             'nombre' => 'Nombre',
-            'tipoinmueblecol' => 'Comentario',
+            'tipoinmueblecol' => 'Tipoinmueblecol',
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getInmuebles()
-    {
-        return $this->hasMany(Inmuebles::className(), ['tipoinmueble_idtipoinmueble' => 'idtipoinmueble']);
     }
 }

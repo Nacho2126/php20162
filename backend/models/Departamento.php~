@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "Departamento".
  *
- * @property integer $idDepartamento
+ * @property integer $id
  * @property string $nombre
  *
  * @property Barrios[] $barrios
@@ -28,8 +28,7 @@ class Departamento extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idDepartamento', 'nombre'], 'required'],
-            [['idDepartamento'], 'integer'],
+            [['nombre'], 'required'],
             [['nombre'], 'string', 'max' => 45],
         ];
     }
@@ -40,7 +39,7 @@ class Departamento extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idDepartamento' => 'Id Departamento',
+            'id' => 'ID',
             'nombre' => 'Nombre',
         ];
     }
@@ -50,6 +49,6 @@ class Departamento extends \yii\db\ActiveRecord
      */
     public function getBarrios()
     {
-        return $this->hasMany(Barrios::className(), ['Departamento_idDepartamento' => 'idDepartamento']);
+        return $this->hasMany(Barrios::className(), ['id_Departamento' => 'id']);
     }
 }

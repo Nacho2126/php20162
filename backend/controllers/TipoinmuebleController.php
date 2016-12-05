@@ -66,7 +66,7 @@ class TipoinmuebleController extends Controller
         $model = new Tipoinmueble();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->idtipoinmueble]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -85,7 +85,7 @@ class TipoinmuebleController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->idtipoinmueble]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -122,6 +122,6 @@ class TipoinmuebleController extends Controller
         }
     }
     public function findAll(){
-        return Tipoinmueble::find()->select(['nombre', 'idtipoinmueble'])->indexBy('idtipoinmueble')->column();
+        return Tipoinmueble::find()->select(['nombre', 'id'])->indexBy('id')->column();
     }
 }

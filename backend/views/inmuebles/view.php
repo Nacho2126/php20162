@@ -4,9 +4,9 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Inmuebles */
+/* @var $model backend\models\Inmuebles */
 
-$this->title = $model->idInmuebles;
+$this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Inmuebles', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -15,8 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->idInmuebles], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->idInmuebles], [
+        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'idInmuebles',
+            'id',
             'nombre',
             'descripcion',
             'cant_dormitorios',
@@ -41,11 +41,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'garantia',
             'tipo_operacion',
             'direccion',
-            'tipoinmueble_idtipoinmueble',
-            'Barrios_idBarrios',
+            'id_tipoinmueble',
+            'id_Barrio',
             'cordx',
             'cordy',
+            'file',
             'user_id',
+            'cant_imagenes',
         ],
     ]) ?>
 

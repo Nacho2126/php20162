@@ -5,9 +5,8 @@ use yii\widgets\ActiveForm;
 use backend\controllers\UsuarioController;
 use backend\controllers\BarriosController;
 use backend\controllers\TipoinmuebleController;
-
 /* @var $this yii\web\View */
-/* @var $model app\models\Inmuebles */
+/* @var $model backend\models\Inmuebles */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -48,9 +47,9 @@ use backend\controllers\TipoinmuebleController;
     <article id="map_article">
     </article>
     <br>
-    <?= $form->field($model, 'tipoinmueble_idtipoinmueble')->dropdownList(TipoInmuebleController::findAll(), ['prompt' => Yii::t('app', 'Seleccione el tipo de Inmueble')]) ?>
+    <?= $form->field($model, 'id_tipoinmueble')->dropdownList(TipoInmuebleController::findAll(), ['prompt' => Yii::t('app', 'Seleccione el tipo de Inmueble')]) ?>
 
-    <?= $form->field($model, 'Barrios_idBarrios')->dropdownList(BarriosController::findAll(), ['prompt' => Yii::t('app', 'Seleccione una Departamento')]) ?>
+    <?= $form->field($model, 'id_Barrio')->dropdownList(BarriosController::findAll(), ['prompt' => Yii::t('app', 'Seleccione una Departamento')]) ?>
 
     <?= $form->field($model, 'cordx')->textInput(['maxlength' => true]) ?>
 
@@ -59,6 +58,8 @@ use backend\controllers\TipoinmuebleController;
 
     <?= $form->field($model, 'user_id')->dropdownList(UsuarioController::findAll(), ['prompt' => Yii::t('app', 'Seleccione una Cliente')]) ?>
     
+    <?= $form->field($model, 'precio')->textInput() ?>
+
     <h4>Subir archivos</h4>
 
     <?= $form->field($model, 'file[]')->fileInput(['multiple' => true, 'accept' => 'image/*']) ?>  
@@ -70,8 +71,7 @@ use backend\controllers\TipoinmuebleController;
 
     
     <?php ActiveForm::end(); ?>
-
 </div>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVcvukh6sDH3sPIqDiK787_k7-EH8E6oU&callback=initMap"
-    async defer></script>
-</script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdqKB2KhL1D9HxiGCdYiS5GNnB9dMghi4&callback=initMap">
+  </script> 

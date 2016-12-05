@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\UsuarioSearch */
+/* @var $searchModel backend\models\UsuarioSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Usuarios';
@@ -41,6 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'prioridad',
             // 'horario_atencion',
             // 'telefono',
+            // 'rol_id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

@@ -66,7 +66,7 @@ class BarriosController extends Controller
         $model = new Barrios();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->idBarrios]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -85,7 +85,7 @@ class BarriosController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->idBarrios]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -121,7 +121,7 @@ class BarriosController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-    public function findAll(){
-        return Barrios::find()->select(['nombre', 'idBarrios'])->indexBy('idBarrios')->column();
+        public function findAll(){
+        return Barrios::find()->select(['nombre', 'id'])->indexBy('id')->column();
     }
 }

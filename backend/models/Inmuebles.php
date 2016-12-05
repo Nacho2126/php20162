@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "Inmuebles".
  *
- * @property integer $idInmuebles
+ * @property integer $id
  * @property string $nombre
  * @property string $descripcion
  * @property integer $cant_dormitorios
@@ -20,17 +20,19 @@ use Yii;
  * @property string $garantia
  * @property string $tipo_operacion
  * @property string $direccion
- * @property integer $tipoinmueble_idtipoinmueble
- * @property integer $Barrios_idBarrios
+ * @property integer $id_tipoinmueble
+ * @property integer $id_Barrio
  * @property string $cordx
  * @property string $cordy
+ * @property string $file
  * @property integer $user_id
- * @property string $imagen
+ * @property integer $cant_imagenes
  *
  * @property Favoritos[] $favoritos
- * @property Tipoinmueble $tipoinmuebleIdtipoinmueble
- * @property Barrios $barriosIdBarrios
- * @property Clientes $user_id
+ * @property Usuario $user
+ * @property Barrios $idBarrio
+ * @property Inmuebles $idTipoinmueble
+ * @property Inmuebles[] $inmuebles
  */
 class Inmuebles extends \yii\db\ActiveRecord
 {
@@ -49,16 +51,17 @@ class Inmuebles extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nombre', 'descripcion', 'tipoinmueble_idtipoinmueble', 'Barrios_idBarrios', 'user_id'], 'required'],
-            [['cant_dormitorios', 'cant_banios', 'mts_totales', 'mts_edificados', 'cant_pisos', 'tipoinmueble_idtipoinmueble', 'Barrios_idBarrios', 'user_id'], 'integer'],
+            [['nombre', 'descripcion', 'id_tipoinmueble', 'id_Barrio', 'user_id'], 'required'],
+            [['cant_dormitorios', 'cant_banios', 'mts_totales', 'mts_edificados', 'cant_pisos', 'id_tipoinmueble', 'id_Barrio', 'user_id', 'cant_imagenes'], 'integer'],
             [['cochera', 'patio'], 'boolean'],
+            [['precio'], 'double'],
             [['nombre'], 'string', 'max' => 255],
             [['descripcion'], 'string', 'max' => 5000],
             [['garantia', 'tipo_operacion', 'direccion', 'cordx', 'cordy'], 'string', 'max' => 45],
-            [['file'], 'file','extensions'=>'jpg,png','maxFiles'=>10],
-            [['tipoinmueble_idtipoinmueble'], 'exist', 'skipOnError' => true, 'targetClass' => Tipoinmueble::className(), 'targetAttribute' => ['tipoinmueble_idtipoinmueble' => 'idtipoinmueble']],
-            [['Barrios_idBarrios'], 'exist', 'skipOnError' => true, 'targetClass' => Barrios::className(), 'targetAttribute' => ['Barrios_idBarrios' => 'idBarrios']],
+            [['file'], 'file','extensions'=>'jpg,png','maxFiles'=>9],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Usuario::className(), 'targetAttribute' => ['user_id' => 'id']],
+            [['id_Barrio'], 'exist', 'skipOnError' => true, 'targetClass' => Barrios::className(), 'targetAttribute' => ['id_Barrio' => 'id']],
+            [['id_tipoinmueble'], 'exist', 'skipOnError' => true, 'targetClass' => Tipoinmueble::className(), 'targetAttribute' => ['id_tipoinmueble' => 'id']],
         ];
     }
 
@@ -68,7 +71,7 @@ class Inmuebles extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idInmuebles' => 'Id Inmuebles',
+            'id' => 'ID',
             'nombre' => 'Nombre',
             'descripcion' => 'Descripcion',
             'cant_dormitorios' => 'Cantidad Dormitorios',
@@ -77,16 +80,18 @@ class Inmuebles extends \yii\db\ActiveRecord
             'mts_edificados' => 'Metros Edificados',
             'cochera' => 'Cochera',
             'patio' => 'Patio',
-            'cant_pisos' => 'Cantidad de Pisos',
+            'cant_pisos' => 'Cantidad Pisos',
             'garantia' => 'Garantia',
             'tipo_operacion' => 'Tipo Operacion',
             'direccion' => 'Direccion',
-            'tipoinmueble_idtipoinmueble' => 'Tipoinmueble',
-            'Barrios_idBarrios' => 'Barrios',
-            'cordx' => 'Cordenada X',
-            'cordy' => 'Cordenada Y',
+            'id_tipoinmueble' => 'Tipoinmueble',
+            'id_Barrio' => 'Barrio',
+            'cordx' => 'Cordx',
+            'cordy' => 'Cordy',
             'file[]' => 'File',
-            'user_id' => 'Clientes',
+            'user_id' => 'Usuario',
+            'cant_imagenes' => 'Cant Imagenes',
+            'precio'=> 'Precio',
         ];
     }
 
@@ -95,30 +100,38 @@ class Inmuebles extends \yii\db\ActiveRecord
      */
     public function getFavoritos()
     {
-        return $this->hasMany(Favoritos::className(), ['Inmuebles_idInmuebles' => 'idInmuebles']);
+        return $this->hasMany(Favoritos::className(), ['id_Inmueble' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getTipoinmuebleIdtipoinmueble()
+    public function getUser()
     {
-        return $this->hasOne(Tipoinmueble::className(), ['idtipoinmueble' => 'tipoinmueble_idtipoinmueble']);
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getBarriosIdBarrios()
+    public function getIdBarrio()
     {
-        return $this->hasOne(Barrios::className(), ['idBarrios' => 'Barrios_idBarrios']);
+        return $this->hasOne(Barrios::className(), ['id' => 'id_Barrio']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getClientesIdClientes()
+    public function getIdTipoinmueble()
     {
-        return $this->hasOne(Usuario::className(), ['id' => 'user_id']);
+        return $this->hasOne(Tipoinmueble::className(), ['id' => 'id_tipoinmueble']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getInmuebles()
+    {
+        return $this->hasMany(Inmuebles::className(), ['id' => 'id']);
     }
 }

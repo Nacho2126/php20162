@@ -7,11 +7,11 @@ use Yii;
 /**
  * This is the model class for table "Barrios".
  *
- * @property integer $idBarrios
+ * @property integer $id
  * @property string $nombre
- * @property integer $Departamento_idDepartamento
+ * @property integer $id_Departamento
  *
- * @property Departamento $departamentoIdDepartamento
+ * @property Departamento $idDepartamento
  * @property Inmuebles[] $inmuebles
  */
 class Barrios extends \yii\db\ActiveRecord
@@ -30,9 +30,10 @@ class Barrios extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nombre'], 'required'],
+            [['nombre', 'id_Departamento'], 'required'],
+            [['id_Departamento'], 'integer'],
             [['nombre'], 'string', 'max' => 100],
-            [['Departamento_idDepartamento'], 'exist', 'skipOnError' => true, 'targetClass' => Departamento::className(), 'targetAttribute' => ['Departamento_idDepartamento' => 'idDepartamento']],
+            [['id_Departamento'], 'exist', 'skipOnError' => true, 'targetClass' => Departamento::className(), 'targetAttribute' => ['id_Departamento' => 'id']],
         ];
     }
 
@@ -42,18 +43,18 @@ class Barrios extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idBarrios' => 'Id Barrios',
+            'id' => 'ID',
             'nombre' => 'Nombre',
-            'Departamento_idDepartamento' => 'Departamento Id Departamento',
+            'id_Departamento' => 'Id  Departamento',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getDepartamentoIdDepartamento()
+    public function getIdDepartamento()
     {
-        return $this->hasOne(Departamento::className(), ['idDepartamento' => 'Departamento_idDepartamento']);
+        return $this->hasOne(Departamento::className(), ['id' => 'id_Departamento']);
     }
 
     /**
@@ -61,6 +62,6 @@ class Barrios extends \yii\db\ActiveRecord
      */
     public function getInmuebles()
     {
-        return $this->hasMany(Inmuebles::className(), ['Barrios_idBarrios' => 'idBarrios']);
+        return $this->hasMany(Inmuebles::className(), ['id_Barrio' => 'id']);
     }
 }

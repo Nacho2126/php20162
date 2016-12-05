@@ -8,7 +8,7 @@ use yii\data\ActiveDataProvider;
 use backend\models\Inmuebles;
 
 /**
- * InmueblesSearch represents the model behind the search form about `app\models\Inmuebles`.
+ * InmueblesSearch represents the model behind the search form about `backend\models\Inmuebles`.
  */
 class InmueblesSearch extends Inmuebles
 {
@@ -18,8 +18,8 @@ class InmueblesSearch extends Inmuebles
     public function rules()
     {
         return [
-            [['idInmuebles', 'cant_dormitorios', 'cant_banios', 'mts_totales', 'mts_edificados', 'cant_pisos', 'tipoinmueble_idtipoinmueble', 'Barrios_idBarrios', 'user_id'], 'integer'],
-            [['nombre', 'descripcion', 'garantia', 'tipo_operacion', 'direccion', 'cordx', 'cordy'], 'safe'],
+            [['id', 'cant_dormitorios', 'cant_banios', 'mts_totales', 'mts_edificados', 'cant_pisos', 'id_tipoinmueble', 'id_Barrio', 'user_id', 'cant_imagenes'], 'integer'],
+            [['nombre', 'descripcion', 'garantia', 'tipo_operacion', 'direccion', 'cordx', 'cordy', 'file'], 'safe'],
             [['cochera', 'patio'], 'boolean'],
         ];
     }
@@ -60,7 +60,7 @@ class InmueblesSearch extends Inmuebles
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'idInmuebles' => $this->idInmuebles,
+            'id' => $this->id,
             'cant_dormitorios' => $this->cant_dormitorios,
             'cant_banios' => $this->cant_banios,
             'mts_totales' => $this->mts_totales,
@@ -68,9 +68,10 @@ class InmueblesSearch extends Inmuebles
             'cochera' => $this->cochera,
             'patio' => $this->patio,
             'cant_pisos' => $this->cant_pisos,
-            'tipoinmueble_idtipoinmueble' => $this->tipoinmueble_idtipoinmueble,
-            'Barrios_idBarrios' => $this->Barrios_idBarrios,
+            'id_tipoinmueble' => $this->id_tipoinmueble,
+            'id_Barrio' => $this->id_Barrio,
             'user_id' => $this->user_id,
+            'cant_imagenes' => $this->cant_imagenes,
         ]);
 
         $query->andFilterWhere(['like', 'nombre', $this->nombre])
@@ -79,7 +80,8 @@ class InmueblesSearch extends Inmuebles
             ->andFilterWhere(['like', 'tipo_operacion', $this->tipo_operacion])
             ->andFilterWhere(['like', 'direccion', $this->direccion])
             ->andFilterWhere(['like', 'cordx', $this->cordx])
-            ->andFilterWhere(['like', 'cordy', $this->cordy]);
+            ->andFilterWhere(['like', 'cordy', $this->cordy])
+            ->andFilterWhere(['like', 'file', $this->file]);
 
         return $dataProvider;
     }

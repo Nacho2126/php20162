@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\BarriosSearch */
+/* @var $model backend\models\BarriosSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -15,11 +15,11 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'idBarrios') ?>
+    <?= $form->field($model, 'id') ?>
 
     <?= $form->field($model, 'nombre') ?>
 
-    <?= $form->field($model, 'Departamento_idDepartamento') ?>
+    <?= $form->field($model, 'id_Departamento') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

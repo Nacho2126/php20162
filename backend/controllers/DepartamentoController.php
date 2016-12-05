@@ -66,7 +66,7 @@ class DepartamentoController extends Controller
         $model = new Departamento();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->idDepartamento]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -85,7 +85,7 @@ class DepartamentoController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->idDepartamento]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -121,10 +121,7 @@ class DepartamentoController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-    /**
-    * Rertorno todos los Departamentos
-    **/
     public function findAll(){
-        return Departamento::find()->select(['nombre', 'idDepartamento'])->indexBy('idDepartamento')->column();
+        return Departamento::find()->select(['nombre', 'id'])->indexBy('id')->column();
     }
 }

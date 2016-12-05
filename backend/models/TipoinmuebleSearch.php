@@ -8,7 +8,7 @@ use yii\data\ActiveDataProvider;
 use backend\models\Tipoinmueble;
 
 /**
- * TipoinmuebleSearch represents the model behind the search form about `app\models\Tipoinmueble`.
+ * TipoinmuebleSearch represents the model behind the search form about `backend\models\Tipoinmueble`.
  */
 class TipoinmuebleSearch extends Tipoinmueble
 {
@@ -18,7 +18,7 @@ class TipoinmuebleSearch extends Tipoinmueble
     public function rules()
     {
         return [
-            [['idtipoinmueble'], 'integer'],
+            [['id'], 'integer'],
             [['nombre', 'tipoinmueblecol'], 'safe'],
         ];
     }
@@ -59,7 +59,7 @@ class TipoinmuebleSearch extends Tipoinmueble
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'idtipoinmueble' => $this->idtipoinmueble,
+            'id' => $this->id,
         ]);
 
         $query->andFilterWhere(['like', 'nombre', $this->nombre])

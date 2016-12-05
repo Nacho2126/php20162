@@ -8,7 +8,7 @@ use yii\data\ActiveDataProvider;
 use backend\models\Barrios;
 
 /**
- * BarriosSearch represents the model behind the search form about `app\models\Barrios`.
+ * BarriosSearch represents the model behind the search form about `backend\models\Barrios`.
  */
 class BarriosSearch extends Barrios
 {
@@ -18,7 +18,7 @@ class BarriosSearch extends Barrios
     public function rules()
     {
         return [
-            [['idBarrios', 'Departamento_idDepartamento'], 'integer'],
+            [['id', 'id_Departamento'], 'integer'],
             [['nombre'], 'safe'],
         ];
     }
@@ -59,8 +59,8 @@ class BarriosSearch extends Barrios
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'idBarrios' => $this->idBarrios,
-            'Departamento_idDepartamento' => $this->Departamento_idDepartamento,
+            'id' => $this->id,
+            'id_Departamento' => $this->id_Departamento,
         ]);
 
         $query->andFilterWhere(['like', 'nombre', $this->nombre]);

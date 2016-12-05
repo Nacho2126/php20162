@@ -5,7 +5,6 @@ namespace backend\controllers;
 use Yii;
 use backend\models\Inmuebles;
 use backend\models\InmueblesSearch;
-use app\models\FormUpload;
 use yii\web\UploadedFile;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -19,7 +18,6 @@ class InmueblesController extends Controller
     /**
      * @inheritdoc
      */
-    public $file;
     public function behaviors()
     {
         return [
@@ -67,16 +65,17 @@ class InmueblesController extends Controller
     public function actionCreate()
     {
         $model = new Inmuebles();
-    if ($model->load(Yii::$app->request->post())  && $model->validate()) {
+        if ($model->load(Yii::$app->request->post())  && $model->validate()) {
             
-            if($model->save()) {
                 $cont=0;           
                 $model->file = UploadedFile::getInstances($model, 'file');
                 foreach ($model->file as $file) {
                     $cont++;
                 }
+                $model->cant_imagenes=$cont;
+            if($model->save()) {
                 
-                $filePath = 'uploads/inmuebles/'.$model->idInmuebles.'_'.$cont;
+                $filePath = 'uploads/inmuebles/'.$model->id;
                 FileHelper::createDirectory($filePath);
                 foreach ($model->file as $i=>$file) {
                     $file->saveAs($filePath . '/' . $i . '.' . $file->extension);
@@ -86,12 +85,22 @@ class InmueblesController extends Controller
                     'model' => $model,
                 ]);
             }
-            return $this->redirect(['view', 'id' => $model->idInmuebles]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
             ]);
         }
+/*
+        $model = new Inmuebles();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+        }*/
     }
 
     /**
@@ -105,7 +114,7 @@ class InmueblesController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->idInmuebles]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -141,25 +150,4 @@ class InmueblesController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-    /**
-    * Rertorno todos los Departamentos
-    **/
-    public function findAll(){
-        return Inmuebles::find()->select(['nombre', 'idInmuebles'])->indexBy('idInmuebles')->column();
-    }
-    public function actionUpload()
-    {
-        $model = new FormUpload();
-
-        if (Yii::$app->request->isPost) {
-            $model->file = UploadedFile::getInstances($model, 'file');
-            if ($model->upload()) {
-                // file is uploaded successfully
-                return;
-            }
-        }
-
-        return $this->render('upload', ['model' => $model]);    
-        }
-    
 }

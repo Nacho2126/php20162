@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use backend\assets\InmuebleAsset;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Inmuebles */
+/* @var $model backend\models\Inmuebles */
 
 $this->title = 'Create Inmuebles';
 $this->params['breadcrumbs'][] = ['label' => 'Inmuebles', 'url' => ['index']];

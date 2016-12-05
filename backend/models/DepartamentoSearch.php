@@ -8,7 +8,7 @@ use yii\data\ActiveDataProvider;
 use backend\models\Departamento;
 
 /**
- * DepartamentoSearch represents the model behind the search form about `app\models\Departamento`.
+ * DepartamentoSearch represents the model behind the search form about `backend\models\Departamento`.
  */
 class DepartamentoSearch extends Departamento
 {
@@ -18,7 +18,7 @@ class DepartamentoSearch extends Departamento
     public function rules()
     {
         return [
-            [['idDepartamento'], 'integer'],
+            [['id'], 'integer'],
             [['nombre'], 'safe'],
         ];
     }
@@ -59,7 +59,7 @@ class DepartamentoSearch extends Departamento
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'idDepartamento' => $this->idDepartamento,
+            'id' => $this->id,
         ]);
 
         $query->andFilterWhere(['like', 'nombre', $this->nombre]);

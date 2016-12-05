@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\FavoritosSearch */
+/* @var $model backend\models\FavoritosSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -15,9 +15,9 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'Inmuebles_idInmuebles') ?>
+    <?= $form->field($model, 'id_Inmueble') ?>
 
-    <?= $form->field($model, 'idFavorito') ?>
+    <?= $form->field($model, 'id') ?>
 
     <?= $form->field($model, 'user_id') ?>
 

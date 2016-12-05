@@ -8,7 +8,7 @@ use yii\data\ActiveDataProvider;
 use backend\models\Favoritos;
 
 /**
- * FavoritosSearch represents the model behind the search form about `app\models\Favoritos`.
+ * FavoritosSearch represents the model behind the search form about `backend\models\Favoritos`.
  */
 class FavoritosSearch extends Favoritos
 {
@@ -18,8 +18,8 @@ class FavoritosSearch extends Favoritos
     public function rules()
     {
         return [
-            [['Inmuebles_idInmuebles', 'user_id'], 'integer'],
-            [['idFavorito'], 'safe'],
+            [['id_Inmueble', 'user_id'], 'integer'],
+            [['id'], 'safe'],
         ];
     }
 
@@ -59,11 +59,11 @@ class FavoritosSearch extends Favoritos
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'Inmuebles_idInmuebles' => $this->Inmuebles_idInmuebles,
+            'id_Inmueble' => $this->id_Inmueble,
             'user_id' => $this->user_id,
         ]);
 
-        $query->andFilterWhere(['like', 'idFavorito', $this->idFavorito]);
+        $query->andFilterWhere(['like', 'id', $this->id]);
 
         return $dataProvider;
     }

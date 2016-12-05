@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Favoritos */
+/* @var $model backend\models\Favoritos */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -12,9 +12,9 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'Inmuebles_idInmuebles')->textInput() ?>
+    <?= $form->field($model, 'id_Inmueble')->textInput() ?>
 
-    <?= $form->field($model, 'idFavorito')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'id')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'user_id')->textInput() ?>
 

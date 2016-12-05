@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\InmueblesSearch */
+/* @var $model backend\models\InmueblesSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -15,7 +15,7 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'idInmuebles') ?>
+    <?= $form->field($model, 'id') ?>
 
     <?= $form->field($model, 'nombre') ?>
 
@@ -41,15 +41,19 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'direccion') ?>
 
-    <?php // echo $form->field($model, 'tipoinmueble_idtipoinmueble') ?>
+    <?php // echo $form->field($model, 'id_tipoinmueble') ?>
 
-    <?php // echo $form->field($model, 'Barrios_idBarrios') ?>
+    <?php // echo $form->field($model, 'id_Barrio') ?>
 
     <?php // echo $form->field($model, 'cordx') ?>
 
     <?php // echo $form->field($model, 'cordy') ?>
 
+    <?php // echo $form->field($model, 'file') ?>
+
     <?php // echo $form->field($model, 'user_id') ?>
+
+    <?php // echo $form->field($model, 'cant_imagenes') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
