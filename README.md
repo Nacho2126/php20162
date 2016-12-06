@@ -12,6 +12,18 @@ deploying the application in different environments.
 
 Documentation is at [docs/guide/README.md](docs/guide/README.md).
 
+```
+Pasos para la instalcion:
+
+1) git clone https://github.com/Nacho2126/php20162.git 
+2) ./init (o init.bat) para inicializar el ambiente (se elige 0 = development) 
+	Si ya tienen archivos de configuracion locale (los -local.php) les pregunta si desean sobrescribir o no 
+3) composer install o php composer.phar install si no esta configurado globalmente
+4) Instalar extension user: composer require "dektrium/yii2-user:0.9.*@dev"
+5) Correr las migrations de yii2 user: php yii migrate/up --migrationPath=@vendor/dektrium/yii2-user/migrations
+
+```
+
 [![Latest Stable Version](https://poser.pugx.org/yiisoft/yii2-app-advanced/v/stable.png)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
 [![Total Downloads](https://poser.pugx.org/yiisoft/yii2-app-advanced/downloads.png)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
 [![Build Status](https://travis-ci.org/yiisoft/yii2-app-advanced.svg?branch=master)](https://travis-ci.org/yiisoft/yii2-app-advanced)
@@ -52,15 +64,4 @@ frontend
     widgets/             contains frontend widgets
 vendor/                  contains dependent 3rd-party packages
 environments/            contains environment-based overrides
-```
-```
-Pasos para la instalcion:
-
-1) git clone https://github.com/Nacho2126/php20162.git 
-2) ./init (o init.bat) para inicializar el ambiente (se elige 0 = development) 
-	Si ya tienen archivos de configuracion locale (los -local.php) les pregunta si desean sobrescribir o no 
-3) composer install o php composer.phar install si no esta configurado globalmente
-4) Instalar extension user: composer require "dektrium/yii2-user:0.9.*@dev"
-5) Correr las migrations de yii2 user: php yii migrate/up --migrationPath=@vendor/dektrium/yii2-user/migrations
-
 ```
