@@ -53,6 +53,7 @@ frontend
 vendor/                  contains dependent 3rd-party packages
 environments/            contains environment-based overrides
 ```
+```
 Pasos para la instalcion:
 
 1) git clone https://github.com/Nacho2126/php20162.git 
