@@ -58,7 +58,7 @@ class Inmuebles extends \yii\db\ActiveRecord
             [['nombre'], 'string', 'max' => 255],
             [['descripcion'], 'string', 'max' => 5000],
             [['garantia', 'tipo_operacion', 'direccion', 'cordx', 'cordy'], 'string', 'max' => 45],
-            [['file'], 'file','extensions'=>'jpg,png','maxFiles'=>9],
+            [['file'], 'file','extensions'=>'jpg','maxFiles'=>9],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Usuario::className(), 'targetAttribute' => ['user_id' => 'id']],
             [['id_Barrio'], 'exist', 'skipOnError' => true, 'targetClass' => Barrios::className(), 'targetAttribute' => ['id_Barrio' => 'id']],
             [['id_tipoinmueble'], 'exist', 'skipOnError' => true, 'targetClass' => Tipoinmueble::className(), 'targetAttribute' => ['id_tipoinmueble' => 'id']],
