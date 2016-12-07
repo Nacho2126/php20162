@@ -19,8 +19,9 @@ class User extends BaseUser
     }
     public function afterSave ( $insert, $changedAttributes ) {
         if ($insert) {
+
             $auth = Yii::$app->authManager;
-            $role = $auth->getRole('sales');
+            $role = $auth->getRole('admin');
             $auth->assign($role, $this->getId());
         }
         return parent::afterSave($insert, $changedAttributes);
