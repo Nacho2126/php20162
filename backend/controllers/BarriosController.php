@@ -8,6 +8,7 @@ use backend\models\BarriosSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * BarriosController implements the CRUD actions for Barrios model.
@@ -26,6 +27,26 @@ class BarriosController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => [''],
+                        'allow' => true,
+                        'roles' => ['?'],
+                    ],
+                    [
+                        'actions' => [''],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['create', 'update', 'delete'],
+                        'allow' => true,
+                        'roles' => ['admin'],
+                    ]
+                ],
+            ]
         ];
     }
 

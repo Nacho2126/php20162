@@ -8,6 +8,7 @@ use backend\models\DepartamentoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * DepartamentoController implements the CRUD actions for Departamento model.
@@ -26,6 +27,26 @@ class DepartamentoController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['index', 'view'],
+                        'allow' => true,
+                        'roles' => ['?'],
+                    ],
+                    [
+                        'actions' => ['index', 'view' ],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['create', 'update', 'delete'],
+                        'allow' => true,
+                        'roles' => ['admin'],
+                    ]
+                ],
+            ]
         ];
     }
 

@@ -10,6 +10,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\FileHelper;
+use yii\filters\AccessControl;
 /**
  * InmueblesController implements the CRUD actions for Inmuebles model.
  */
@@ -27,6 +28,26 @@ class InmueblesController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => [''],
+                        'allow' => true,
+                        'roles' => ['?'],
+                    ],
+                    [
+                        'actions' => ['index', 'view', 'create', 'update'],
+                        'allow' => true,
+                        'roles' => ['manage'],
+                    ],
+                    [
+                        'actions' => ['index', 'view', 'create', 'update', 'delete'],
+                        'allow' => true,
+                        'roles' => ['admin'],
+                    ]
+                ],
+            ]
         ];
     }
 

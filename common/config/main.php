@@ -23,6 +23,9 @@ return [
             ],
         ],
     ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+        ],
 
 
         'cache' => [
@@ -32,11 +35,11 @@ return [
     'modules' => [
 	    'user' => [
 		'class' => 'dektrium\user\Module',
-        'admins' => ['jmrsm01', '123'], 
-        /*'modelMap' => [
+        'admins' => ['root'],
+        'modelMap' => [
                 'User' => 'common\models\User',
                 'RegistrationForm' => 'common\models\RegistrationForm',
-            ]*/
+            ]
 	    ],
 	],
     
