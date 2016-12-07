@@ -1,42 +1,37 @@
 <?php
 
 /* @var $this yii\web\View */
+use yii\helpers\Html;
 
-$this->title = 'My Yii Application';
+$mensage1 = 'Bienvenido!';
+$mensage2 = 'Felicitaciones Ud ha ingresado Correctamente.';
+
+echo Html::tag('div', $mensage1, ['class' => 'alert alert-warning']);
+echo Html::tag('p', $mensage2, ['class' => 'alert alert-success']);
+
+$this->title = 'QuieroCasa';
 ?>
 
 <!-- background-image: url("/../images.jpg"); -->
-
-<body >
-
 <div class="site-index">
 
-<br>
-<br>
-
-    <div class="alert alert-success">
-  <strong>Felicidades!</strong> Felicitaciones Ud se ha registrado Correctamente.
-</div>
-
-    <div background-color: "black"; class="jumbotron";>
+    <div class="jumbotron";>
         <h1>Bienvenido a QuieroCasa.com.uy</h1>
 
-        <p class="lead">Taller de PHP 2016</p>
-
-        
+        <p class="lead">Taller de PHP 2016</p>   
     </div>
 
     <div class="body-content">
 
         <div class="row">
             <div class="col-lg-4"> 
-            <h3>Registrar un Inmueble</h3>
-                <a href="http://localhost:8080/php20162/backend/web/index.php?r=inmuebles%2Findex">Haz click <strong >AQUI</strong></a> 
+            <h3>Registrar un Barrio</h3>
+                <a href="http://localhost:8080/php20162/backend/web/index.php?r=barrios%2Findex&sort=nombre">Haz click <strong >AQUI</strong></a> 
 
              </div>
             <div class="col-lg-4">  
-                <h3>Registrar un Tipo de Inmueble</h3>
-                <a href="http://localhost:8080/php20162/backend/web/index.php?r=tipoinmueble%2Findex">Haz click <strong>AQUI</strong></a> 
+                <h3>Registrar un Departamento</h3>
+                <a href="http://localhost:8080/php20162/backend/web/index.php?r=departamento%2Findex&sort=nombre">Haz click <strong>AQUI</strong></a> 
 
             </div>
              <div class="col-lg-4">  
@@ -83,4 +78,3 @@ $this->title = 'My Yii Application';
         -->
     </div>
 </div>
-</body>

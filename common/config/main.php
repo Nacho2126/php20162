@@ -32,7 +32,7 @@ return [
     'modules' => [
 	    'user' => [
 		'class' => 'dektrium\user\Module',
-        'admins' => ['jmrsm01'],
+        'admins' => ['jmrsm01', '123'], 
         /*'modelMap' => [
                 'User' => 'common\models\User',
                 'RegistrationForm' => 'common\models\RegistrationForm',
