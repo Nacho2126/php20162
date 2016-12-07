@@ -30,9 +30,8 @@ class Favoritos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_Inmueble', 'id', 'user_id'], 'required'],
+            [['id_Inmueble', 'user_id'], 'required'],
             [['id_Inmueble', 'user_id'], 'integer'],
-            [['id'], 'string', 'max' => 45],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Usuario::className(), 'targetAttribute' => ['user_id' => 'id']],
             [['id_Inmueble'], 'exist', 'skipOnError' => true, 'targetClass' => Inmuebles::className(), 'targetAttribute' => ['id_Inmueble' => 'id']],
         ];
@@ -45,7 +44,6 @@ class Favoritos extends \yii\db\ActiveRecord
     {
         return [
             'id_Inmueble' => 'Id  Inmueble',
-            'id' => 'ID',
             'user_id' => 'User ID',
         ];
     }

@@ -3,6 +3,7 @@ namespace common\models;
 use Yii;
 use Yii\helper\ArrayHelper;
 use dektrium\user\models\User as BaseUser;
+use dektrium\user\helpers\Password;
 /**
  * User model
  *
@@ -32,5 +33,31 @@ class User extends BaseUser
         unset($parentRules['usernameMatch']);
         unset($parentRules['usernameLength']);
         return $parentRules;
+    }
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        return static::findOne(['access_token' => $token]);
+    }
+    /**
+     * @param string $authKey
+     * @return boolean if auth key is valid for current user
+     */
+    public function validateAuthKey($authKey)
+    {
+        return $this->getAuthKey() === $authKey;
+    }
+ 
+    public static function findIdentity($id)
+    {
+        return static::findOne($id);
+    }
+    public static function findByUsername($user)
+    {
+        return static::find()->where(['username' => $user])->one();
+    }
+
+    public function validatePassword($username, $password){
+        $user = static::findByUsername($username);
+        return Password::validate($password, $user->password_hash);
     }
 }

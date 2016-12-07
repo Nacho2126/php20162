@@ -56,7 +56,7 @@ use backend\controllers\TipoinmuebleController;
     <?= $form->field($model, 'cordy')->textInput(['maxlength' => true]) ?>
 
 
-    <?= $form->field($model, 'user_id')->dropdownList(UsuarioController::findAll(), ['prompt' => Yii::t('app', 'Seleccione una Cliente')]) ?>
+    <?= $form->field($model, 'user_id')->dropdownList(UsuarioController::findAll(), ['prompt' => Yii::t('app', 'Seleccione un Cliente')]) ?>
     
     <?= $form->field($model, 'precio')->textInput() ?>
 
