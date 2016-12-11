@@ -41,7 +41,7 @@ class BarriosController extends Controller
                         'roles' => ['@'],
                     ],
                     [
-                        'actions' => ['create', 'update', 'delete'],
+                        'actions' => ['index','view','create', 'update', 'delete'],
                         'allow' => true,
                         'roles' => ['admin'],
                     ]

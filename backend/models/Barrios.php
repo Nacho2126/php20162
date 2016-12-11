@@ -68,7 +68,7 @@ class Barrios extends \yii\db\ActiveRecord
         return $this->hasMany(Inmuebles::className(), ['id_Barrio' => 'id']);
     }
 
-    public function behaviors()
+    /*public function behaviors()
     {
         return [
             [
@@ -80,6 +80,6 @@ class Barrios extends \yii\db\ActiveRecord
                 'value' => new Expression('NOW()'),
             ],
         ];
-    }
+    }*/
 
 }

@@ -41,7 +41,7 @@ class DepartamentoController extends Controller
                         'roles' => ['@'],
                     ],
                     [
-                        'actions' => ['create', 'update', 'delete'],
+                        'actions' => ['view','create', 'update', 'delete'],
                         'allow' => true,
                         'roles' => ['admin'],
                     ]
