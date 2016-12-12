@@ -43,6 +43,7 @@ class Favoritos extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
+            'id' => 'ID',
             'id_Inmueble' => 'Id  Inmueble',
             'user_id' => 'User ID',
         ];
