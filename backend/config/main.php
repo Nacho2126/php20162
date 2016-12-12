@@ -20,6 +20,15 @@ return [
              ],
          ],
     ],
+        /*'urlManager' => [
+            'class' => 'yii\web\UrlManager',
+            // Hide index.php
+            'showScriptName' => false,
+            // Use pretty URLs
+            'enablePrettyUrl' => true,
+            'rules' => [
+            ],
+        ],*/
         'assetManager' => [
             'bundles' => [
                 'dosamigos\google\maps\MapAsset' => [

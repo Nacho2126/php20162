@@ -21,7 +21,7 @@ class User extends BaseUser
         if ($insert) {
 
             $auth = Yii::$app->authManager;
-            $role = $auth->getRole('admin');
+            $role = $auth->getRole('user');
             $auth->assign($role, $this->getId());
         }
         return parent::afterSave($insert, $changedAttributes);
