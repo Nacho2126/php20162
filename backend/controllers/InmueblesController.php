@@ -133,6 +133,34 @@ class InmueblesController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        if ($model->load(Yii::$app->request->post())  && $model->validate()) {
+            
+                $cont=0;           
+                $model->file = UploadedFile::getInstances($model, 'file');
+                foreach ($model->file as $file) {
+                    $cont++;
+                }
+                $model->cant_imagenes=$cont;
+            if($model->save()) {
+                
+                $filePath = 'uploads/inmuebles/'.$model->id;
+                FileHelper::createDirectory($filePath);
+                foreach ($model->file as $i=>$file) {
+                    $file->saveAs($filePath . '/' . $i . '.' . $file->extension);
+                }
+
+            } else {                
+                return $this->render('update', [
+                'model' => $model,
+                ]);
+            }
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
+        /*$model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -140,7 +168,7 @@ class InmueblesController extends Controller
             return $this->render('update', [
                 'model' => $model,
             ]);
-        }
+        }*/
     }
 
     /**
