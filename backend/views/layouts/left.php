@@ -44,8 +44,9 @@ use yii\bootstrap\NavBar;
                     ['label' => 'Menu', 'options' => ['class' => 'header']],
                     ['label' => 'ABM Clientes', 'icon' => 'fa fa-dashboard', 'url' => ['/user/admin/index'],'visible' => !Yii::$app->user->isGuest],
                     ['label' => 'ABM Inmuebles', 'icon' => 'fa fa-dashboard', 'url' => ['/inmuebles/index'],'visible' => !Yii::$app->user->isGuest],
-                    ['label' => 'ABM Tipo Inmuebles', 'icon' => 'fa fa-dashboard', 'url' => ['/tipoinmueble/index'],'visible' => !Yii::$app->user->isGuest ],
+                    ['label' => 'ABM Tipo Inmuebles', 'icon' => 'fa fa-dashboard', 'url' => ['/tipoinmueble/index'],'visible' => !Yii::$app->user->isGuest],
                     ['label' => 'Login', 'url' => ['user/security/login'], 'visible' => Yii::$app->user->isGuest],
+                    //hola
                     
                 ],
             ]
