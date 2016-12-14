@@ -4,6 +4,7 @@ use Yii;
 use Yii\helper\ArrayHelper;
 use dektrium\user\models\User as BaseUser;
 use dektrium\user\helpers\Password;
+use backend\models\Favoritos;
 /**
  * User model
  *
@@ -14,7 +15,6 @@ class User extends BaseUser
     public function beforeSave($insert)
     {
         $this->username = $this->email;
-        
         return parent::beforeSave($insert);
     }
     public function afterSave ( $insert, $changedAttributes ) {
@@ -60,5 +60,10 @@ class User extends BaseUser
     public function validatePassword($username, $password){
         $user = static::findByUsername($username);
         return Password::validate($password, $user->password_hash);
+    }
+    public function getFavoritos($username)
+    {
+        $user = static::findByUsername($username);
+        return $user->hasMany(Favoritos::className());
     }
 }

@@ -37,7 +37,7 @@ return [
             'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
-                
+                'GET <apiv:v\d+>/usuario/obtenerfavoritos' => '<apiv>/usuario/obtenerfavoritos',
                 // CRUD Controllers
                 'HEAD <apiv:v\d+>/<controller:\w+>'              => '<apiv>/<controller>/index',
                 'GET <apiv:v\d+>/<controller:\w+>'               => '<apiv>/<controller>/index',

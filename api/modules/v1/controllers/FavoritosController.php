@@ -8,7 +8,7 @@ use backend\models\Favoritos;
 use common\models\User;
 use yii\filters\auth\HttpBasicAuth;
 use yii\web\HttpException;
-
+use Yii;
 
 class FavoritosController extends ActiveController
 {
