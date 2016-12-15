@@ -14,7 +14,7 @@ class FavoritosController extends ActiveController
 {
     public $modelClass = 'backend\models\Favoritos';
     
-    public function behaviors()
+    /*public function behaviors()
     {
         $behaviors = parent::behaviors();
         $behaviors['authenticator'] = [
@@ -37,7 +37,7 @@ class FavoritosController extends ActiveController
             //return false;
             //OR
             throw new HttpException( 500, "Error en username or password!" );
-    }
+    }*/
 
 }
 ?>
